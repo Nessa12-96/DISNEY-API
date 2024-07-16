@@ -1,1 +1,40 @@
+// data/characters.json
+[
+  {
+    "id": 1,
+    "name": "Mickey Mouse",
+    "firstAppearance": "Steamboat Willie",
+    "imageUrl": "https://example.com/images/mickey.png"
+  },
+  {
+    "id": 2,
+    "name": "Minnie Mouse",
+    "firstAppearance": "Steamboat Willie",
+    "imageUrl": "https://example.com/images/minnie.png"
+  },
+  {
+    "id": 3,
+    "name": "Donald Duck",
+    "firstAppearance": "The Wise Little Hen",
+    "imageUrl": "https://example.com/images/donald.png"
+  },
+  {
+    "id": 4,
+    "name": "Goofy",
+    "firstAppearance": "Mickey's Revue",
+    "imageUrl": "https://example.com/images/goofy.png"
+  },
+  {
+    "id": 5,
+    "name": "Pluto",
+    "firstAppearance": "The Chain Gang",
+    "imageUrl": "https://example.com/images/pluto.png"
+  },
+  {
+    "id": 6,
+    "name": "Daisy Duck",
+    "firstAppearance": "Mr. Duck Steps Out",
+    "imageUrl": "https://example.com/images/daisy.png"
+  }
+]
 
