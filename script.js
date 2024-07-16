@@ -1,59 +1,16 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const charactersList = document.getElementById('characters-list');
-    const addCharacterBtn = document.getElementById('add-character-btn');
-    const modal = document.getElementById('modal');
-    const closeModal = document.querySelector('.close');
-    const addCharacterForm = document.getElementById('add-character-form');
-
-    // Fetch characters from API and display
-    fetch('/api/characters')
-        .then(response => response.json())
-        .then(data => {
-            data.forEach(character => {
-                const div = document.createElement('div');
-                div.innerHTML = `<strong>${character.name}</strong> - ${character.firstAppearance}`;
-                charactersList.appendChild(div);
-            });
+fetch('data.json')
+    .then(response => response.json())
+    .then(data => {
+        const charactersContainer = document.getElementById('characters');
+        data.forEach(character => {
+            const characterDiv = document.createElement('div');
+            characterDiv.classList.add('character');
+            characterDiv.innerHTML = `
+                <img src="${character.imageUrl}" alt="${character.name}">
+                <h2>${character.name}</h2>
+                <p>First Appearance: ${character.firstAppearance}</p>
+            `;
+            charactersContainer.appendChild(characterDiv);
         });
-
-    // Open modal
-    addCharacterBtn.addEventListener('click', () => {
-        modal.style.display = 'block';
-    });
-
-    // Close modal
-    closeModal.addEventListener('click', () => {
-        modal.style.display = 'none';
-    });
-
-    // Add new character
-    addCharacterForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const name = document.getElementById('name').value;
-        const firstAppearance = document.getElementById('firstAppearance').value;
-
-        fetch('/api/characters', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ name, firstAppearance })
-        })
-        .then(response => response.json())
-        .then(character => {
-            const div = document.createElement('div');
-            div.innerHTML = `<strong>${character.name}</strong> - ${character.firstAppearance}`;
-            charactersList.appendChild(div);
-            modal.style.display = 'none';
-            addCharacterForm.reset();
-        });
-    });
-
-    // Close modal when clicking outside
-    window.addEventListener('click', (e) => {
-        if (e.target == modal) {
-            modal.style.display = 'none';
-        }
-    });
-});
-
+    })
+    .catch(error => console.error('Error fetching data:', error));
